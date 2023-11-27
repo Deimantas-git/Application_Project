@@ -4,11 +4,11 @@ import androidx.appcompat.app.AppCompatActivity;
 
 import android.os.Bundle;
 
-public class AppLogInScreen extends AppCompatActivity {
+public class RegisterScreenActivity extends AppCompatActivity {
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_app_log_in_screen);
+        setContentView(R.layout.activity_register_screen);
     }
 }
