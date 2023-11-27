@@ -6,13 +6,35 @@
     android:layout_height="match_parent"
     tools:context=".MainActivity">
 
+
     <Button
         android:id="@+id/btnSignout"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginBottom="67dp"
+        android:layout_marginEnd="160dp"
+        android:layout_marginBottom="68dp"
         android:text="Button"
         app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintEnd_toEndOf="parent" />
+
+    <Button
+        android:id="@+id/inAppLogInBtn"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="180dp"
+        android:layout_marginBottom="212dp"
+        android:text="Button"
+        app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintStart_toStartOf="parent" />
+
+    <ToggleButton
+        android:id="@+id/firebaseLoginButton"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="35dp"
+        android:textOff="Firebase Auth"
+        android:textOn="App Auth"
+        app:layout_constraintBottom_toTopOf="@+id/btnSignout"
+        app:layout_constraintStart_toStartOf="@+id/btnSignout" />
+
 </androidx.constraintlayout.widget.ConstraintLayout>

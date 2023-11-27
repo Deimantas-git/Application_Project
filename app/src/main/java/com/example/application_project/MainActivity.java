@@ -27,7 +27,7 @@ public class MainActivity extends AppCompatActivity {
 
     private FirebaseAuth mAuth;
     Button SignOut;
-
+    Button inAppLogInBtn;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -35,9 +35,22 @@ public class MainActivity extends AppCompatActivity {
         setContentView(R.layout.activity_main);
 
 
+        Button inAppLoginButton = findViewById(R.id.inAppLogInBtn);
+        Button firebaseLoginButton = findViewById(R.id.firebaseLoginButton);
 
         mAuth = FirebaseAuth.getInstance();
         createSignInIntent();
+
+
+
+        inAppLoginButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                // Navigate to your in-app login screen
+                Intent intent = new Intent(MainActivity.this, AppLogInScreen.class);
+                startActivity(intent);
+            }
+        });
 
         SignOut = (Button)findViewById(R.id.btnSignout);
         SignOut.setOnClickListener(new View.OnClickListener(){
