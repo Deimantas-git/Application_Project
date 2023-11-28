@@ -15,6 +15,9 @@
         android:theme="@style/Theme.Application_Project"
         tools:targetApi="31">
         <activity
+            android:name=".FirstScreenPage"
+            android:exported="false" />
+        <activity
             android:name=".RegisterScreenActivity"
             android:exported="false" />
         <activity

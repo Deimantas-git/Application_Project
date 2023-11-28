@@ -46,9 +46,8 @@ public class MainActivity extends AppCompatActivity {
         inAppLoginButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                // Navigate to your in-app login screen
-                //Intent intent = new Intent(MainActivity.this, AppLogInScreen.class);
-                //startActivity(intent);
+                Intent intent = new Intent(MainActivity.this, LogInScreen.class);
+                startActivity(intent);
             }
         });
 
