@@ -6,4 +6,16 @@
     android:layout_height="match_parent"
     tools:context=".FirstScreenPage">
 
+    <TextView
+        android:id="@+id/textView"
+        android:layout_width="485dp"
+        android:layout_height="544dp"
+        android:layout_marginEnd="147dp"
+        android:layout_marginBottom="16dp"
+        android:rotation="60"
+        android:rotationY="0"
+        android:text="-----MainPage----"
+        android:textSize="60sp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent" />
 </androidx.constraintlayout.widget.ConstraintLayout>

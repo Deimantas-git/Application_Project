@@ -45,8 +45,8 @@ public class DatabaseSetUp extends SQLiteOpenHelper {
     public Boolean checkEmail(String email){
         SQLiteDatabase db = this.getReadableDatabase();
         Cursor cursor = db.rawQuery("Select * from user where email =?", new String[]{email});
-        if(cursor.getCount()>0) return false;
-        else return true;
+        if(cursor.getCount()>0) return true;
+        else return false;
     }
 
 

@@ -47,15 +47,15 @@ public class RegisterScreenActivity extends AppCompatActivity {
                         if (checkEmail == false) {
                             Boolean insert = db.insert(email_text, password_text);
                             if (insert == true) {
-                                Toast.makeText(getApplicationContext(), "Account registerd", Toast.LENGTH_SHORT).show();
+                                Toast.makeText(getApplicationContext(), "Account registered", Toast.LENGTH_SHORT).show();
                             } else {
-                                Toast.makeText(getApplicationContext(), "Account not registerd", Toast.LENGTH_SHORT).show();
+                                Toast.makeText(getApplicationContext(), "Account not registered", Toast.LENGTH_SHORT).show();
                             }
                         } else {
                             Toast.makeText(getApplicationContext(), "User already exists", Toast.LENGTH_SHORT).show();
                         }
                     } else {
-                        Toast.makeText(getApplicationContext(), "Email already exists", Toast.LENGTH_SHORT).show();
+                        Toast.makeText(getApplicationContext(), "Password don't match", Toast.LENGTH_SHORT).show();
                     }
                 }
             }
