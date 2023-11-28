@@ -5,7 +5,9 @@ import androidx.activity.result.ActivityResultLauncher;
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 
+import android.content.ActivityNotFoundException;
 import android.content.Intent;
+import android.net.Uri;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
@@ -52,7 +54,6 @@ import java.util.List;
 public class LogInScreen extends AppCompatActivity {
     private FirebaseAuth mAuth;
     Button SignOut;
-
     Button registerBtn;
     Button googleAuth;
     TextView emailTxt;
@@ -122,6 +123,43 @@ public class LogInScreen extends AppCompatActivity {
                 createSignInIntent();
             }
         });
+
+
+        ///////////////////////////////////////////////////////////////////////////////////////////////////
+                                    /*Experimenting Ignore code below:*/
+        ///////////////////////////////////////////////////////////////////////////////////////////////////
+
+
+//        Button sendEmailButton = findViewById(R.id.sendEmailButton);
+//        sendEmailButton.setOnClickListener(new View.OnClickListener() {
+//            @Override
+//            public void onClick(View v) {
+//                // Create an intent to send an email
+//                Intent emailIntent = new Intent(Intent.ACTION_SENDTO);
+//                emailIntent.setData(Uri.parse("mailto:")); // only email apps should handle this
+//
+//                // Set email recipients (to, cc, bcc)
+//                emailIntent.putExtra(Intent.EXTRA_EMAIL, new String[]{"recipient@gmail.com"});
+//                emailIntent.putExtra(Intent.EXTRA_CC, new String[]{"cc@gmail.com"});
+//                emailIntent.putExtra(Intent.EXTRA_BCC, new String[]{"bcc@gmail.com"});
+//
+//                // Set email subject and body
+//                emailIntent.putExtra(Intent.EXTRA_SUBJECT, "Subject of the email");
+//                emailIntent.putExtra(Intent.EXTRA_TEXT, "Body of the email");
+//
+//                try {
+//                    // Show the email app chooser
+//                    startActivity(Intent.createChooser(emailIntent, "Send email using..."));
+//                } catch (ActivityNotFoundException e) {
+//                    // Handle the case where no email app is installed
+//                    Toast.makeText(getApplicationContext(), "No email app installed", Toast.LENGTH_SHORT).show();
+//                }
+//            }
+//        });
+
+        ///////////////////////////////////////////////////////////////////////////////////////////////////
+                                    /*Experimenting Ignore code above:*/
+        ///////////////////////////////////////////////////////////////////////////////////////////////////
     }
 
     private final ActivityResultLauncher<Intent> signInLauncher = registerForActivityResult(
