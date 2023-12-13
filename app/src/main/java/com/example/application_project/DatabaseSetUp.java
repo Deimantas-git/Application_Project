@@ -12,19 +12,25 @@ import androidx.annotation.Nullable;
 public class DatabaseSetUp extends SQLiteOpenHelper {
 
 
+    private static final String DATABASE_NAME = "patient_database";
+    private static final int DATABASE_VERSION = 1;
+    private static final String TABLE_NAME = "patients";
+    private static final String COLUMN_ID = "id";
+    private static final String COLUMN_NAME = "name";
 
-
-
-
-    public DatabaseSetUp(@Nullable Context context){
-        super(context, "Login.db", null, 1);
-    }
 
 
     @Override
     public void onCreate(SQLiteDatabase db) {
 
         db.execSQL("Create table user(email text primary key, password text)");
+
+        String createPatientsTableQuery = "CREATE TABLE " + TABLE_NAME + " (" +
+                COLUMN_ID + " INTEGER PRIMARY KEY AUTOINCREMENT, " +
+                COLUMN_NAME + " TEXT);";
+        db.execSQL(createPatientsTableQuery);
+
+
 
     }
 
@@ -35,7 +41,9 @@ public class DatabaseSetUp extends SQLiteOpenHelper {
 
     }
 
-
+    public DatabaseSetUp(@Nullable Context context){
+        super(context, "Login.db", null, 1);
+    }
     public boolean insert(String email, String password){
         SQLiteDatabase db = this.getWritableDatabase();
         ContentValues contentValues = new ContentValues();
@@ -60,5 +68,17 @@ public class DatabaseSetUp extends SQLiteOpenHelper {
         Cursor cursor = db.rawQuery("Select * from user where email=? and password =?", new String[]{email,password});
         if(cursor.getCount()>0) return true;
         else return false;
+    }
+
+
+    public long insertPatient(String name) {
+        SQLiteDatabase db = this.getWritableDatabase();
+        ContentValues values = new ContentValues();
+
+
+        values.put(COLUMN_NAME, name);
+        long newRowId = db.insert(TABLE_NAME, null, values);
+        db.close();
+        return newRowId;
     }
 }

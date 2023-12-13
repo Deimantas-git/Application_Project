@@ -15,7 +15,10 @@
         android:theme="@style/Theme.Application_Project"
         tools:targetApi="31">
         <activity
-            android:name=".ScheduleApp"
+            android:name=".WindowTest"
+            android:exported="false" />
+        <activity
+            android:name=".ScheduleAppT"
             android:exported="false" />
         <activity
             android:name=".FirstScreenPage"

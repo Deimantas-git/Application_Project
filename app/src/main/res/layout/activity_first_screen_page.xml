@@ -4,28 +4,31 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:background="#3A98C5"
     tools:context=".FirstScreenPage">
 
     <Button
-        android:id="@+id/next"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="304dp"
-        android:layout_marginBottom="128dp"
-        android:text="Button"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintStart_toStartOf="parent" />
+        android:id="@+id/schedual_btn"
+        android:layout_width="254dp"
+        android:layout_height="0dp"
+        android:layout_marginTop="111dp"
+        android:layout_marginEnd="65dp"
+        android:layout_marginBottom="169dp"
+        android:text="Schedual Patient"
+        android:textSize="24sp"
+        app:layout_constraintBottom_toTopOf="@+id/carePlan_btn"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
 
-    <TextView
-        android:id="@+id/textView"
-        android:layout_width="485dp"
-        android:layout_height="544dp"
-        android:layout_marginEnd="147dp"
-        android:layout_marginBottom="16dp"
-        android:rotation="60"
-        android:rotationY="0"
-        android:text="-----MainPage----"
-        android:textSize="60sp"
+    <Button
+        android:id="@+id/carePlan_btn"
+        android:layout_width="255dp"
+        android:layout_height="0dp"
+        android:layout_marginEnd="65dp"
+        android:layout_marginBottom="201dp"
+        android:text="Care Plan"
+        android:textSize="24sp"
         app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent" />
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/schedual_btn" />
 </androidx.constraintlayout.widget.ConstraintLayout>

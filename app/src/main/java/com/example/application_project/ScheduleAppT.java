@@ -6,53 +6,62 @@ import android.os.Bundle;
 import android.os.CountDownTimer;
 import android.view.View;
 import android.widget.Button;
+import android.widget.EditText;
 import android.widget.RadioButton;
 import android.widget.TextView;
 import android.widget.Toast;
 
-public class ScheduleApp extends AppCompatActivity {
-    Button startBreakButton, startReminderButton;
+public class ScheduleAppT extends AppCompatActivity {
+    Button startBreakButton, startReminderButton, savePatientButton;
     TextView breakTimerTextView, reminderTimerTextView;
     CountDownTimer breakCountDownTimer, reminderCountDownTimer;
+    DatabaseSetUp databaseHelper;
+    RadioButton radioButton1,radioButton3, radioButton2;
+
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_schedule_app);
 
 
-        int check2 = 0;
-        int check3 = 0;
-
-        RadioButton medCheck = (RadioButton) findViewById(R.id.rbMedCheck);
-        RadioButton skinCheck = (RadioButton) findViewById(R.id.rbSkinCheck);
-        RadioButton discharge = (RadioButton) findViewById(R.id.rbDischarges);
-
-
-        medCheck.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                int check1 = 0;
-
-                if(medCheck.isChecked() == true){
-                    medCheck.setChecked(false);
-                }
-
-
-                if(medCheck.isChecked() == false) {
-                    medCheck.setChecked(true);
-                }
-
-
-            }
-        });
 
 
 
-
+        radioButton1 = findViewById(R.id.rbDischarges);
+        radioButton2 = findViewById(R.id.rbMedCheck);
+        radioButton3 = findViewById(R.id.rbSkinCheck);
         startBreakButton = findViewById(R.id.startBreakButton);
         startReminderButton = findViewById(R.id.startReminderButton);
         breakTimerTextView = findViewById(R.id.breakTimerView);
         reminderTimerTextView = findViewById(R.id.reminderTimerView);
+        savePatientButton = findViewById(R.id.savePatientButton);
+        databaseHelper = new DatabaseSetUp(this);
+
+        savePatientButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                savePatient();
+            }
+        });
+    }
+    private void savePatient() {
+        EditText patientNameEditText = findViewById(R.id.patientNameEditText);
+        String patientName = patientNameEditText.getText().toString();
+
+        if (!patientName.isEmpty()) {
+            long result = databaseHelper.insertPatient(patientName);
+
+            if (result != -1) {
+                showPatientSavedMessage();
+                patientNameEditText.setText("");
+            } else {
+                Toast.makeText(ScheduleAppT.this, "Error saving patient", Toast.LENGTH_SHORT).show();
+            }
+        } else {
+            Toast.makeText(ScheduleAppT.this, "Please enter a patient name", Toast.LENGTH_SHORT).show();
+        }
+
 
         startBreakButton.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -67,6 +76,10 @@ public class ScheduleApp extends AppCompatActivity {
                 startTimer("Reminder for care plan to be checked", 40 * 60 * 1000, reminderTimerTextView, reminderCountDownTimer);
             }
         });
+    }
+
+    private void showPatientSavedMessage() {
+        Toast.makeText(ScheduleAppT.this, "Patient Saved!", Toast.LENGTH_SHORT).show();
     }
 
     private void startTimer(final String timerName, long duration, final TextView timerTextView, CountDownTimer countDownTimer) {
@@ -98,7 +111,8 @@ public class ScheduleApp extends AppCompatActivity {
     }
 
     private void showTimerFinishedMessage(String timerName) {
-        Toast.makeText(ScheduleApp.this, timerName + " ", Toast.LENGTH_LONG).show();
+        Toast.makeText(ScheduleAppT.this, timerName + " ", Toast.LENGTH_LONG).show();
     }
+
 }
 

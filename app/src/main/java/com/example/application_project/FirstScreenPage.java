@@ -7,28 +7,35 @@ import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
 
+
 public class FirstScreenPage extends AppCompatActivity {
 
-
-    Button nextbtn;
+    Button carePlan;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_first_screen_page);
 
-        nextbtn = (Button) findViewById(R.id.next);
-
-        nextbtn.setOnClickListener(new View.OnClickListener() {
+        Button carePlan = (Button) findViewById(R.id.carePlan_btn);
+        carePlan.setOnClickListener(new View.OnClickListener() {
             @Override
-            public void onClick(View v) {
-                Intent i = new Intent(FirstScreenPage.this, ScheduleApp.class);
-                startActivity(i);
+            public void onClick(View view) {
+                Intent intent = new Intent(FirstScreenPage.this, MainActivity.class);
+                startActivity(intent);
             }
         });
 
-        ///////////////////////////////////////////////////////////////////////////////////////////////////
-                                                /*Add your code here*/
-        ///////////////////////////////////////////////////////////////////////////////////////////////////
+
+
+        Button Schedual = (Button) findViewById(R.id.schedual_btn);
+        Schedual.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent(FirstScreenPage.this, ScheduleAppT.class);
+                startActivity(intent);
+            }
+        });
+
     }
 }
